@@ -87,12 +87,13 @@ android {
 publishing {
     publications {
         create<MavenPublication>("debug") {
-            val artifactPath =
-                "${layout.projectDirectory.dir("/build/outputs/aar")}/$FEATURE_MODULE_2-debug.aar"
             groupId = GROUP_ID
             artifactId = ARTIFACT_ID
             version = ARTIFACT_VERSION
-            artifact(artifactPath)
+            artifact(
+                layout.buildDirectory.dir("/outputs/aar").get()
+                    .file("${FEATURE_MODULE_2}-debug.aar")
+            )
         }
         tasks.withType<PublishToMavenLocal>().configureEach {
             enabled = true
