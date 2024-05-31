@@ -90,10 +90,12 @@ publishing {
             groupId = GROUP_ID
             artifactId = ARTIFACT_ID
             version = ARTIFACT_VERSION
-            artifact(
+            val source = (
                 layout.buildDirectory.dir("/outputs/aar").get()
                     .file("${FEATURE_MODULE_2}-debug.aar")
             )
+            println("aar file: $source")
+            artifact(source)
         }
         tasks.withType<PublishToMavenLocal>().configureEach {
             enabled = true
