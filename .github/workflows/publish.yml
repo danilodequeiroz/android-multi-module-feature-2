@@ -1,7 +1,6 @@
 name: Publish Artifact
 
 on:
-  workflow_dispatch:
   push:
     branches:
       -develop
