@@ -5,7 +5,24 @@ plugins {
     Plugins.JetbrainsKotlin.apply {
         id(id) version (version)
     }
+    Plugins.MavenPublish.apply {
+        id(id)
+    }
 }
+
+val GITHUB_USER = "GITHUB_USER"
+val GITHUB_TOKEN = "GITHUB_TOKEN"
+
+/**
+ * Values
+ */
+val GROUP_ID = "com.github.danilodequeiroz.mm"
+val ARTIFACT_ID = "featuremodule2"
+val ARTIFACT_VERSION = "0.0.1-SNAPSHOT"
+val MAVEN_REPOSITORY_NAME = "GithubPackages"
+val MAVEN_REPOSITORY_URL =
+    "https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2"
+val FEATURE_MODULE_2 = "feature-module-2"
 
 android {
     namespace = "com.github.danilodequeiroz.mm.feature_module_2"
@@ -40,8 +57,10 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(
+                    "proguard-android-optimize.txt"
+                ),
+                "proguard-rules.pro",
             )
         }
     }
@@ -61,6 +80,36 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("debug") {
+            val artifactPath =
+                "${layout.projectDirectory.dir("/build/outputs/aar/")}$FEATURE_MODULE_2-debug.aar"
+            groupId = GROUP_ID
+            artifactId = ARTIFACT_ID
+            version = ARTIFACT_VERSION
+            artifact(artifactPath)
+        }
+        tasks.withType<PublishToMavenLocal>().configureEach {
+            enabled = true
+        }
+        tasks.named("publishDebugPublicationToMavenLocal") {
+            dependsOn(":$FEATURE_MODULE_2:bundleDebugAar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2")
+            credentials {
+                username = System.getenv(GITHUB_USER)
+                password = System.getenv(GITHUB_TOKEN)
+            }
         }
     }
 }

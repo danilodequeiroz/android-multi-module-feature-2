@@ -11,6 +11,7 @@ val ARTIFACT_VERSION = "0.0.1-SNAPSHOT"
 val MAVEN_REPOSITORY_NAME = "GithubPackages"
 val MAVEN_REPOSITORY_URL =
     "https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2"
+
 pluginManagement {
     repositories {
         google {
@@ -22,9 +23,9 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -33,12 +34,11 @@ dependencyResolutionManagement {
         mavenPackagesGithub(repositoryHandler = this)
     }
 }
+
 rootProject.name = "android-multi-module-feature-2"
 include(":app")
 include(":$FEATURE_MODULE_2")
 project(":$FEATURE_MODULE_2").name = FEATURE_MODULE_2
-
-
 
 fun mavenPackagesGithub(
     repositoryHandler: RepositoryHandler,
