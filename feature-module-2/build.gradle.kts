@@ -91,12 +91,13 @@ publishing {
             artifactId = ARTIFACT_ID
             version = ARTIFACT_VERSION
             val source = (
-                layout.buildDirectory.dir("/outputs/aar").get()
+                layout.buildDirectory.dir("outputs").get().dir("aar" )
                     .file("${FEATURE_MODULE_2}-debug.aar")
             )
             val deprecatedSource = "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
-            println("aar file: $deprecatedSource")
-            artifact(deprecatedSource)
+            println("aar file (deprecated): $source")
+            println("aar file (non-deprecated): $deprecatedSource")
+            artifact(source)
 
             "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
         }
