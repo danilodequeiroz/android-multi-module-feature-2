@@ -1,16 +1,16 @@
-val FEATURE_MODULE_2 = "feature-module-2"
-val GITHUB_USER = "GITHUB_USER"
-val GITHUB_TOKEN = "GITHUB_TOKEN"
+val githubUser = "GITHUB_USER"
+val githubToken = "GITHUB_TOKEN"
 
 /**
  * Values
  */
-val GROUP_ID = "com.github.danilodequeiroz.mm"
-val ARTIFACT_ID = "featuremodule2"
-val ARTIFACT_VERSION = "0.0.1-SNAPSHOT"
-val MAVEN_REPOSITORY_NAME = "GithubPackages"
-val MAVEN_REPOSITORY_URL =
+val groupId = "com.github.danilodequeiroz.mm"
+val artifactId = "featuremodule2"
+val artifactVersion = "0.0.1-SNAPSHOT"
+val mavenRepositoryName = "GithubPackages"
+val mavenRepositoryUrl =
     "https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2"
+val featureModule2 = "feature-module-2"
 
 pluginManagement {
     repositories {
@@ -37,16 +37,16 @@ dependencyResolutionManagement {
 
 rootProject.name = "android-multi-module-feature-2"
 include(":app")
-include(":$FEATURE_MODULE_2")
-project(":$FEATURE_MODULE_2").name = FEATURE_MODULE_2
+include(":$featureModule2")
+project(":$featureModule2").name = featureModule2
 
 fun mavenPackagesGithub(
     repositoryHandler: RepositoryHandler,
 ) = repositoryHandler.maven {
-    name = MAVEN_REPOSITORY_NAME
-    url = uri(MAVEN_REPOSITORY_URL)
+    name = mavenRepositoryName
+    url = uri(mavenRepositoryUrl)
     credentials {
-        username = System.getenv(GITHUB_USER)
-        password = System.getenv(GITHUB_TOKEN)
+        username = System.getenv(githubUser)
+        password = System.getenv(githubToken)
     }
 }

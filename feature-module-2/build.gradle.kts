@@ -10,19 +10,19 @@ plugins {
     }
 }
 
-val GITHUB_USER = "GITHUB_USER"
-val GITHUB_TOKEN = "GITHUB_TOKEN"
+val githubUser = "GITHUB_USER"
+val githubToken = "GITHUB_TOKEN"
 
 /**
  * Values
  */
-val GROUP_ID = "com.github.danilodequeiroz.mm"
-val ARTIFACT_ID = "featuremodule2"
-val ARTIFACT_VERSION = "0.0.1-SNAPSHOT"
-val MAVEN_REPOSITORY_NAME = "GithubPackages"
-val MAVEN_REPOSITORY_URL =
+val groupId = "com.github.danilodequeiroz.mm"
+val artifactId = "featuremodule2"
+val artifactVersion = "0.0.1-SNAPSHOT"
+val maven_repository_name = "GithubPackages"
+val maven_repository_url =
     "https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2"
-val FEATURE_MODULE_2 = "feature-module-2"
+val featureModule2 = "feature-module-2"
 
 android {
     namespace = "com.github.danilodequeiroz.mm.feature_module_2"
@@ -87,25 +87,17 @@ android {
 publishing {
     publications {
         create<MavenPublication>("debug") {
-            groupId = GROUP_ID
-            artifactId = ARTIFACT_ID
-            version = ARTIFACT_VERSION
-            val source = (
-                layout.buildDirectory.dir("outputs").get().dir("aar" )
-                    .file("${FEATURE_MODULE_2}-debug.aar")
-            )
-            val deprecatedSource = "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
-            println("aar file (deprecated): $source")
-            println("aar file (non-deprecated): $deprecatedSource")
-            artifact(source)
-
-            "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
+            groupId = groupId
+            artifactId = artifactId
+            version = artifactVersion
+            artifact(layout.buildDirectory.dir("outputs").get().dir("aar")
+                .file("${featureModule2}-debug.aar"))
         }
         tasks.withType<PublishToMavenLocal>().configureEach {
             enabled = true
         }
         tasks.named("publishDebugPublicationToMavenLocal") {
-            dependsOn(":$FEATURE_MODULE_2:bundleDebugAar")
+            dependsOn(":$featureModule2:bundleDebugAar")
         }
     }
 
@@ -114,8 +106,8 @@ publishing {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2")
             credentials {
-                username = System.getenv(GITHUB_USER)
-                password = System.getenv(GITHUB_TOKEN)
+                username = System.getenv(githubUser)
+                password = System.getenv(githubToken)
             }
         }
     }
