@@ -35,8 +35,8 @@ android {
             minCompileSdk = 24
         }
 
-        group = "com.my-company"
-        version = "1.0"
+        group = groupId
+        version = artifactVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
