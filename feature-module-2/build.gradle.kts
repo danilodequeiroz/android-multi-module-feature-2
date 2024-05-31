@@ -94,8 +94,11 @@ publishing {
                 layout.buildDirectory.dir("/outputs/aar").get()
                     .file("${FEATURE_MODULE_2}-debug.aar")
             )
-            println("aar file: $source")
-            artifact(source)
+            val deprecatedSource = "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
+            println("aar file: $deprecatedSource")
+            artifact(deprecatedSource)
+
+            "$buildDir/outputs/aar/${FEATURE_MODULE_2}-debug.aar"
         }
         tasks.withType<PublishToMavenLocal>().configureEach {
             enabled = true
