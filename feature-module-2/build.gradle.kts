@@ -88,7 +88,7 @@ publishing {
     publications {
         create<MavenPublication>("debug") {
             val artifactPath =
-                "${layout.projectDirectory.dir("/build/outputs/aar/")}$FEATURE_MODULE_2-debug.aar"
+                "${layout.projectDirectory.dir("/build/outputs/aar")}/$FEATURE_MODULE_2-debug.aar"
             groupId = GROUP_ID
             artifactId = ARTIFACT_ID
             version = ARTIFACT_VERSION
