@@ -2,7 +2,7 @@
  * Keys
  */
 //const val GITHUB_USER = "GITHUB_USER"
-//const val GITHUB_PASSWORD = "GITHUB_PASSWORD"
+//const val GITHUB_TOKEN = "GITHUB_TOKEN"
 //
 ///**
 // * Values

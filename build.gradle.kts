@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 val GITHUB_USER = "GITHUB_USER"
-val GITHUB_PASSWORD = "GITHUB_PASSWORD"
+val GITHUB_TOKEN = "GITHUB_TOKEN"
 
 /**
  * Values
@@ -52,7 +52,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/danilodequeiroz/android-multi-module-feature-2")
             credentials {
                 username = System.getenv(GITHUB_USER)
-                password = System.getenv(GITHUB_PASSWORD)
+                password = System.getenv(GITHUB_TOKEN)
             }
         }
     }

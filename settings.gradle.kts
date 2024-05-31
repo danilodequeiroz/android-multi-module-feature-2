@@ -1,6 +1,6 @@
 val FEATURE_MODULE_2 = "feature-module-2"
 val GITHUB_USER = "GITHUB_USER"
-val GITHUB_PASSWORD = "GITHUB_PASSWORD"
+val GITHUB_TOKEN = "GITHUB_TOKEN"
 
 /**
  * Values
@@ -47,6 +47,6 @@ fun mavenPackagesGithub(
     url = uri(MAVEN_REPOSITORY_URL)
     credentials {
         username = System.getenv(GITHUB_USER)
-        password = System.getenv(GITHUB_PASSWORD)
+        password = System.getenv(GITHUB_TOKEN)
     }
 }

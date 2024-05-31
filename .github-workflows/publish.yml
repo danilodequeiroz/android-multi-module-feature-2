@@ -42,5 +42,5 @@ jobs:
         run: bash ./gradlew :feature-module-2:publish
         env:
           GITHUB_USER: $${{ github.actor }}
-          GITHUB_PASSWORD: $${{ secrets.SECRET_TOKEN }}
+          GITHUB_TOKEN: $${{ secrets.GITHUB_TOKEN }}
 
