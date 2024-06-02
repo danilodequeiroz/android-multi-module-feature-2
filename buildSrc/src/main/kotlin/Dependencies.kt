@@ -1,5 +1,5 @@
 private object Versions {
-    const val agp = "8.6.0-alpha03"
+    const val agp = "8.6.0-alpha04"
     const val kotlin = "1.9.0"
 
     const val appcompat = "1.6.1"

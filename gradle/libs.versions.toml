@@ -16,7 +16,7 @@ kotlin = "1.9.0"
 #androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 [plugins]
 #jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }#[versions]
-#agp = "8.6.0-alpha03"
+#agp = "8.6.0-alpha04"
 #kotlin = "1.9.0"
 #coreKtx = "1.10.1"
 #junit = "4.13.2"
