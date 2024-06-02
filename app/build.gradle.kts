@@ -50,7 +50,7 @@ android {
 dependencies {
 //    implementation(project(":feature-module-2"))
     //noinspection UseTomlInstead
-    implementation("com.github.danilodequeiroz.mm:featuremodule2:0.0.1-SNAPSHOT")
+    implementation("com.github.danilodequeiroz.mm:feature-module-2:0.0.1-SNAPSHOT")
     implementation(Libraries.androidxCoreKtx)
     implementation(Libraries.androidxAppcompat)
     implementation(Libraries.material)
